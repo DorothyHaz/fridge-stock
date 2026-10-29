@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Fridge Clear-Out · Cook with what you already have</title>
+  <meta name="description" content="Track what's in your fridge, keep your own recipes, and let the app tell you what you can cook tonight." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark">F</span>
+      <div>
+        <h1>Fridge Clear-Out</h1>
+        <p class="tagline">Write down what's in the fridge, then see what you can cook tonight.</p>
+      </div>
+    </div>
+    <div class="topbar-actions">
+      <button class="btn btn-ghost" id="btn-export" type="button">Export data</button>
+      <button class="btn btn-ghost" id="btn-import" type="button">Import data</button>
+      <input type="file" id="file-import" accept="application/json,.json" hidden />
+      <button class="btn btn-ghost danger" id="btn-reset" type="button">Reset to presets</button>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button class="tab is-active" role="tab" data-tab="pantry" type="button">Stock<span class="tab-count" id="count-pantry">0</span></button>
+    <button class="tab" role="tab" data-tab="recipes" type="button">Recipes<span class="tab-count" id="count-recipes">0</span></button>
+  </nav>
+
+  <main>
+    <section class="panel" id="panel-pantry" role="tabpanel">
+      <div class="panel-toolbar">
+        <input class="input search" id="pantry-search" type="search" placeholder="Search ingredients or tags — try &quot;tomato&quot; or &quot;green&quot;" />
+        <button class="btn btn-primary" id="btn-add-ingredient" type="button">+ Add ingredient</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table" id="pantry-table">
+          <thead>
+            <tr>
+              <th class="col-name">Ingredient</th>
+              <th class="col-tags">Tags</th>
+              <th class="col-stock">In stock</th>
+              <th class="col-actions">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="pantry-body"></tbody>
+        </table>
+        <p class="empty" id="pantry-empty" hidden>Nothing here yet. Use “Add ingredient” to put something in.</p>
+      </div>
+    </section>
+
+    <section class="panel" id="panel-recipes" role="tabpanel" hidden>
+      <div class="panel-toolbar">
+        <p class="hint">Anything you're short of turns red and blocks cooking. Cooking deducts the stock for you.</p>
+        <button class="btn btn-primary" id="btn-add-recipe" type="button">+ Add recipe</button>
+      </div>
+      <div class="recipe-grid" id="recipe-grid"></div>
+      <p class="empty" id="recipes-empty" hidden>No recipes yet. Use “Add recipe” to write down something you actually cook.</p>
+    </section>
+  </main>
+
+  <div class="modal" id="modal" hidden>
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <div class="modal-head">
+        <h2 id="modal-title">Title</h2>
+        <button class="btn-icon" id="modal-close" type="button" aria-label="Close">×</button>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+      <div class="modal-foot">
+        <button class="btn btn-ghost danger" id="modal-delete" type="button" hidden>Delete</button>
+        <span class="spacer"></span>
+        <button class="btn btn-ghost" id="modal-cancel" type="button">Cancel</button>
+        <button class="btn btn-primary" id="modal-save" type="button">Save</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" hidden></div>
+
+  <footer class="foot">
+    <p>Your data lives in this browser only. Clearing site data or switching browsers loses it — use “Export data” to keep a copy.</p>
+  </footer>
+
+  <script src="core.js"></script>
+  <script src="ui.js"></script>
+</body>
+</html>
