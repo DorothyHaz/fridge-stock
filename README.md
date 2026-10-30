@@ -3,7 +3,7 @@ It can help you keep track of what’s in your fridge. 冷蔵庫に何が入っ�
 Fridge Clear-Out
 Write down what's in the fridge, then see what you can cook tonight.
 A single-page app with no backend, no account and no network calls. Everything lives in the browser's `localStorage`, and you can export it as JSON.
-Live: https://dorothyhaz.github.io/fridge-stock/
+
 Why this
 Most recipe apps work backwards: pick a dish, then go shopping. Meanwhile things quietly rot at the back of the fridge, because at the moment you decide what to eat you don't actually know what you have.
 This app flips the order. Record the stock first, and let the list tell you what's possible right now.
